@@ -1,9 +1,15 @@
+
+
+
 import torch
 from tqdm import tqdm
 import numpy as np
 
 class PINN(torch.nn.Module):
-    
+    '''
+    3-Dimensional Physics-Informed Neural Network (PINN) - 
+    Converges on solution for heat diffusion PDE in (X, Y, T) dimensions
+    '''
     def __init__(self, layers = [10,10], device = None, sensor_coords = [[0,0]]):
         super(PINN, self).__init__() # inherit methods from torch
         
