@@ -184,6 +184,9 @@ import cv2
 import wandb
 
 class PINN_env(gym.Env):
+ '''wrapper for PDE-governed environment and external RL agents. 
+ Runs PINN to interface with input feature extraction neural network of external agent
+ '''
     metadata = {'render.modes': ['human']}
     
     def __init__(self, env, verbose = False,
