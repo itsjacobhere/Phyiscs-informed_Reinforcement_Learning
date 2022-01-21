@@ -62,7 +62,8 @@ ub = X_u_test[-1]
 
 def trainingdata(ic = ic, n_bc = 100, n_coll = 10000, n_ic = 100, temp = 0, 
                  sensor_coords = None, sensor_values = None):
-
+    '''generates test sample coordinates for initial run of PINN.'''
+    
     # initial conditions: 100 x 256 where t = 0
     init_x = np.hstack((Y[:,:,0][:,None], X[:,:,0][:,None], T[:,:,0][:,None]))
     init_u = ic
