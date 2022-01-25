@@ -3,10 +3,11 @@ from fenics import *
 from mshr import *
 from dolfin import *
 
-# typical libaries
+# standard libaries
 import numpy as np
 import matplotlib.pyplot as plt
 
+# jupyter
 from IPython.display import Image
 from IPython.display import set_matplotlib_formats
 from IPython.display import clear_output
@@ -20,8 +21,13 @@ from gym import spaces
 
 import wandb
 
+
+
 class heat_diffusion(gym.Env):
-    
+    '''
+    basic heat diffusion based model which simulates the spread of heat through diffusion, or only by particle movement.
+    Uses FEniCS as the primary engine for computing FEA for approximating PDE solutions.
+    '''
     def __init__(self, dt = 5e-4, sensor_coords = [[0,0]],
                 continuous = False,
                 noisy_IC = False,
@@ -32,7 +38,7 @@ class heat_diffusion(gym.Env):
                 wandb_name = None,
                 project_name = 'Default_project',
                 Cp = 0.07):
-        super(heat_diffusion, self).__init__() # inherit from openAI gym
+        super(heat_diffusion, self).__init__() # inherit methods from openAI gym env
         
         self.continuous = continuous
         self.tol = 0.5
@@ -160,8 +166,6 @@ class heat_diffusion(gym.Env):
         bc_right = DirichletBC(self.V, gD_right, boundaries, 4)
         bc_person = DirichletBC(self.V, self.gN, boundaries, 5)
         self.bcs = [bc_bottom, bc_top, bc_left, bc_right, bc_person] #store boundaries in list
-        
-        
         
         # Define initial conditions
         self.u_D = Constant(20) 
@@ -378,7 +382,9 @@ class heat_diffusion(gym.Env):
 
 from tqdm import tqdm
 class Convection(gym.Env):
-    
+    '''
+    Simulates heat transfer in a room with a single occupant by merging convection, diffusion, and the Navier-Stokes equations.
+    '''
     def __init__(self, dt = 5e-4, sensor_coords = [[0,0]],
                 continuous = False,
                 noisy_IC = False,
