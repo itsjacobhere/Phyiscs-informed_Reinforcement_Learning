@@ -1,3 +1,4 @@
+
 import numpy as np
 from PINN_3D import PINN
 import scipy
@@ -24,6 +25,8 @@ import matplotlib.pyplot as plt
 is_ipython = 'inline' in plt.get_backend()
 if is_ipython: from IPython import display
 if is_ipython: display.clear_output(wait=True)
+    
+    
     
 l2 = [20,20,20,20,20,20,20, 20]
 sensor_coords = np.array([[0.1, -0.9],[0.9,0.9],[0.5,0.45]])
@@ -59,6 +62,8 @@ X_u_test = np.hstack((Y.flatten()[:,None], X.flatten()[:,None], T.flatten()[:,No
 # Domain bounds
 lb = X_u_test[0] 
 ub = X_u_test[-1] 
+
+
 
 def trainingdata(ic = ic, n_bc = 100, n_coll = 10000, n_ic = 100, temp = 0, 
                  sensor_coords = None, sensor_values = None):
