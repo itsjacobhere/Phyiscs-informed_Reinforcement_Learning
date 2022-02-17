@@ -27,7 +27,6 @@ if is_ipython: from IPython import display
 if is_ipython: display.clear_output(wait=True)
     
     
-    
 l2 = [20,20,20,20,20,20,20, 20]
 sensor_coords = np.array([[0.1, -0.9],[0.9,0.9],[0.5,0.45]])
 
