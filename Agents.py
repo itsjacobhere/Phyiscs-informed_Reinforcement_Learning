@@ -12,6 +12,7 @@ import time
 import wandb
 import numpy as np
 
+
 import torch 
 from matplotlib import pyplot as plt
 from IPython.display import clear_output
@@ -20,6 +21,7 @@ from dataclasses import dataclass
 from typing import Any
 from models import Model as Stock_NN
 from models import ConvModel2 as ConvModel
+
 
 import matplotlib.pyplot as plt
 is_ipython = 'inline' in plt.get_backend()
